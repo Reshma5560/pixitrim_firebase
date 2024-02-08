@@ -1,16 +1,10 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pixytrim/common/common_widgets.dart';
 import 'package:pixytrim/common/custom_image.dart';
 import 'package:pixytrim/controller/login_screen_controller/login_screen_controller.dart';
-import 'package:pixytrim/screens/index_screen/index_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
+
+import '../index_screen/index_for_screen.dart';
 
 class welcomeText extends StatelessWidget {
   const welcomeText({Key? key}) : super(key: key);
@@ -49,11 +43,12 @@ class socialLogin extends StatefulWidget {
 }
 
 class _socialLoginState extends State<socialLogin> {
-  FacebookAccessToken? _token;
-  FacebookUserProfile? _profile;
+  // FacebookAccessToken? _token;
+  // FacebookUserProfile? _profile;
   String? _imageUrl;
   String? _email;
   final loginScreenController = Get.find<LoginScreenController>();
+
   //bool ? isLogin = false;
 
   @override
@@ -62,7 +57,7 @@ class _socialLoginState extends State<socialLogin> {
       children: [
         GestureDetector(
           onTap: () {
-            loginScreenController.googleAuthentication(context);
+            // loginScreenController.googleAuthentication(context);
           },
           child: Padding(
             padding: const EdgeInsets.all(5),
@@ -99,11 +94,11 @@ class _socialLoginState extends State<socialLogin> {
         GestureDetector(
           onTap: () async {
             //facebookAuthentication(context);
-            _onPressedLogInButton().then((value) {
-              if (loginScreenController.profile!.userId.isNotEmpty) {
-                Get.off(() => IndexScreen());
-              }
-            });
+            // _onPressedLogInButton().then((value) {
+              // if (loginScreenController.profile!.userId.isNotEmpty) {
+              //   Get.off(() => IndexScreen());
+              // }
+            // });
           },
           child: Padding(
             padding: const EdgeInsets.all(5),
@@ -158,14 +153,14 @@ class _socialLoginState extends State<socialLogin> {
     );
   }
 
-  Future<void> _onPressedLogInButton() async {
-    await loginScreenController.plugin.logIn(
-      permissions: [
-        FacebookPermission.publicProfile,
-        FacebookPermission.email,
-      ],
-    );
-    await loginScreenController.updateLoginInfo();
-    await loginScreenController.plugin.logOut();
-  }
+  // Future<void> _onPressedLogInButton() async {
+  //   await loginScreenController.plugin.logIn(
+  //     permissions: [
+  //       FacebookPermission.publicProfile,
+  //       FacebookPermission.email,
+  //     ],
+  //   );
+  //   await loginScreenController.updateLoginInfo();
+  //   await loginScreenController.plugin.logOut();
+  // }
 }

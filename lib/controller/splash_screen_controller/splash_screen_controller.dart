@@ -1,10 +1,11 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'package:pixytrim/screens/index_screen/index_screen.dart';
 import 'package:pixytrim/screens/login_screen/login_screen.dart';
 import 'package:pixytrim/screens/onboarding_screen/onboarding_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../screens/index_screen/index_for_screen.dart';
 
 class SplashScreenController extends GetxController{
   bool onBoardingValue = false;

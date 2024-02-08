@@ -1,7 +1,5 @@
 import 'dart:io';
 // import 'package:file_picker/file_picker.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
@@ -28,8 +26,8 @@ import 'index_screen_widgets.dart';
 
 class IndexScreen extends StatefulWidget {
   //IndexScreen({Key? key}) : super(key: key);
-  UserCredential? result;
-  IndexScreen({this.result});
+  // UserCredential? result;
+  // IndexScreen({this.result});
 
   @override
   _IndexScreenState createState() => _IndexScreenState();
@@ -39,7 +37,7 @@ class _IndexScreenState extends State<IndexScreen> {
   final ImagePicker imagePicker = ImagePicker();
 
   CollageScreenController collageScreenController =
-      Get.put(CollageScreenController());
+  Get.put(CollageScreenController());
 
   IndexScreenController indexController = Get.put(IndexScreenController());
 
@@ -54,105 +52,105 @@ class _IndexScreenState extends State<IndexScreen> {
         children: [
           MainBackgroundWidget(),
           Obx(
-            () => collageScreenController.isLoading.value
+                () => collageScreenController.isLoading.value
                 ? LoadingAnimationWidget.inkDrop(
-                    size: Get.size.width * 0.1,
-                    color: AppColor.kBorderGradientColor1,
-                  )
+              size: Get.size.width * 0.1,
+              color: AppColor.kBorderGradientColor1,
+            )
                 : SafeArea(
-                    child: Stack(
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Stack(
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Header Name "Pixy Trim"
+                      SizedBox(height: Get.size.height * 0.01),
+                      HeaderTextModule(),
+                      Container(
+                        height: Get.height * 0.40,
+                        margin: EdgeInsets.only(left: 10, right: 10),
+                        child: Column(
                           children: [
-                            // Header Name "Pixy Trim"
-                            SizedBox(height: Get.size.height * 0.01),
-                            HeaderTextModule(),
-                            Container(
-                              height: Get.height * 0.40,
-                              margin: EdgeInsets.only(left: 10, right: 10),
-                              child: Column(
+                            Expanded(
+                              flex: 6,
+                              child: Row(
                                 children: [
+                                  // Gallery Module
                                   Expanded(
-                                    flex: 6,
-                                    child: Row(
-                                      children: [
-                                        // Gallery Module
-                                        Expanded(
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              openGallery();
-                                            },
-                                            child: GalleryModule(),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Container(
-                                            child: Column(
-                                              children: [
-                                                // Camera Module
-                                                Expanded(
-                                                  child: GestureDetector(
-                                                    onTap: () {
-                                                      openCamera();
-                                                    },
-                                                    child: CameraModule(),
-                                                  ),
-                                                ),
-
-                                                // Trim Video Module
-                                                Expanded(
-                                                  child: GestureDetector(
-                                                    onTap: () => selectImages(),
-                                                    child: CollageModule(),
-                                                  ),
-                                                ),
-                                              ],
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        openGallery();
+                                      },
+                                      child: GalleryModule(),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      child: Column(
+                                        children: [
+                                          // Camera Module
+                                          Expanded(
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                openCamera();
+                                              },
+                                              child: CameraModule(),
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 3,
-                                    child: GestureDetector(
-                                      onTap: () =>
-                                          Get.to(() => PreviousSessionScreen()),
-                                      child: LocalStoreDataModule(),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 3,
-                                    child: GestureDetector(
-                                      /*onTap: () {
-                                        Get.to(() => ProfileScreen(
-                                              result: widget.result,
-                                            ));
-                                      },*/
-                                      // child: AddProfile(),
+
+                                          // Trim Video Module
+                                          Expanded(
+                                            child: GestureDetector(
+                                              onTap: () => selectImages(),
+                                              child: CollageModule(),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-
-                            Container(
-                              height: 48,
-                              child: indexController.adWidget,
-                            )
+                            Expanded(
+                              flex: 3,
+                              child: GestureDetector(
+                                onTap: () =>
+                                    Get.to(() => PreviousSessionScreen()),
+                                child: LocalStoreDataModule(),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 3,
+                              child: GestureDetector(
+                                /*onTap: () {
+                                        Get.to(() => ProfileScreen(
+                                              result: widget.result,
+                                            ));
+                                      },*/
+                                // child: AddProfile(),
+                              ),
+                            ),
                           ],
                         ),
-                        // Align(
-                        //   alignment: Alignment.bottomCenter,
-                        //   child: Container(
-                        //     height: 50,
-                        //     child: indexController.adWidget,
-                        //   ),
-                        // ),
-                      ],
-                    ),
+                      ),
+
+                      Container(
+                        height: 48,
+                        child: indexController.adWidget,
+                      )
+                    ],
                   ),
+                  // Align(
+                  //   alignment: Alignment.bottomCenter,
+                  //   child: Container(
+                  //     height: 50,
+                  //     child: indexController.adWidget,
+                  //   ),
+                  // ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
@@ -160,8 +158,8 @@ class _IndexScreenState extends State<IndexScreen> {
   }
 
   Future<File> compressImageFile(
-    File imageFile,
-  ) async {
+      File imageFile,
+      ) async {
     var filepath = imageFile.absolute.path;
     File? result;
 
