@@ -187,7 +187,7 @@ class _BlurScreenState extends State<BlurScreen> {
                     // );
                     await _capturePng().then((value) {
                       Get.back();
-                      cameraScreenController.interstitialAd.show();
+                      cameraScreenController.interstitialAd?.show();
                     });
                   },
                   child: Container(child: Icon(Icons.check_rounded)),
@@ -387,7 +387,7 @@ class _BlurScreenState extends State<BlurScreen> {
     Widget continueButton = IconsButton(
       onPressed: () async {
         await _capturePng().then((value) {
-          cameraScreenController.interstitialAd.show();
+          cameraScreenController.interstitialAd?.show();
           Get.back();
           Get.back();
         });

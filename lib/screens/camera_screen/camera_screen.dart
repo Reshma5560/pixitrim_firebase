@@ -145,7 +145,7 @@ class _CameraScreenState extends State<CameraScreen> {
                     GestureDetector(
                       onTap: () {
                         saveImage();
-                        cameraScreenController.interstitialAd.show();
+                        cameraScreenController.interstitialAd?.show();
                       },
                       child: Container(
                         child: Image.asset(
@@ -325,7 +325,7 @@ class _CameraScreenState extends State<CameraScreen> {
           Get.back();
         }
         Get.back();
-        cameraScreenController.interstitialAd.show();
+        cameraScreenController.interstitialAd?.show();
       },
       text: 'save draft'.toUpperCase(),
       color: AppColor.kButtonCyanColor,

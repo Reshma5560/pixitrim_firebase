@@ -170,7 +170,7 @@ class _CompressImageScreenState extends State<CompressImageScreen> {
                   onTap: () async {
                     await saveImage();
                     csController.compressSize.value = 61;
-                    csController.interstitialAd.show();
+                    var show = csController.interstitialAd?.show();
                     Get.back();
                   },
                   child: Container(
@@ -369,7 +369,7 @@ class _CompressImageScreenState extends State<CompressImageScreen> {
 
     Widget continueButton = IconsButton(
       onPressed: () async {
-        csController.interstitialAd.show();
+        csController.interstitialAd?.show();
         Get.back();
         Get.back();
       },

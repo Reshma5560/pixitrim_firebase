@@ -57,7 +57,7 @@ class CameraScreenController extends GetxController {
   late BannerAdListener listener;
 
   // late RewardedAd rewardedAd;
-  late InterstitialAd interstitialAd;
+   InterstitialAd? interstitialAd;
 
  /* void loadRewardedAd() {
     RewardedAd.load(
@@ -99,7 +99,7 @@ class CameraScreenController extends GetxController {
         },
       ),
     );
-    interstitialAd.fullScreenContentCallback = FullScreenContentCallback(
+    interstitialAd?.fullScreenContentCallback = FullScreenContentCallback(
       onAdShowedFullScreenContent: (InterstitialAd ad) =>
           print('%ad onAdShowedFullScreenContent.'),
       onAdDismissedFullScreenContent: (InterstitialAd ad) {

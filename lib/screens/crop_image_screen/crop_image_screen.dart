@@ -851,7 +851,7 @@ class _CropImageScreenState extends State<CropImageScreen> {
 
     Widget continueButton = IconsButton(
       onPressed: () async {
-        csController.interstitialAd.show();
+        csController.interstitialAd?.show();
         Get.back();
         Get.back();
 

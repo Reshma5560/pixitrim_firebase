@@ -120,7 +120,7 @@ class _PhotoBlendScreenState extends State<PhotoBlendScreen> {
                       //   timeInSecForIosWeb: 1,
                       // );
                       await _capturePng().then((value) {
-                        csController.interstitialAd.show();
+                        csController.interstitialAd?.show();
                         Get.back();
                       });
 
@@ -702,7 +702,7 @@ class _PhotoBlendScreenState extends State<PhotoBlendScreen> {
 
     Widget continueButton = IconsButton(
       onPressed: () async {
-        csController.interstitialAd.show();
+        csController.interstitialAd?.show();
         Get.back();
         Get.back();
       },
